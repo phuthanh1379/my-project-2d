@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Blockade : MonoBehaviour
@@ -16,6 +17,9 @@ public class Blockade : MonoBehaviour
 
     private void OnCutsceneEvent(string triggerName)
     {
-        transform.position = endPosition;
+        transform
+            .DOMove(endPosition, 0.3f)
+            .SetDelay(3.25f)
+            ;
     }
 }
