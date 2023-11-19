@@ -41,9 +41,4 @@ public class PlayerProfile : MonoBehaviour
     {
         _playerData.AddScore(score);
     }
-
-    private void AnimationEventHandler()
-    {
-        Debug.LogWarning("Event!");
-    }
 }
