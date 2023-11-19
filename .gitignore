@@ -1,0 +1,10 @@
+﻿.vs
+First 2D Project.sln
+.vsconfig
+*.csproj
+UserSettings
+Temp
+obj
+Logs
+Library
+Builds
