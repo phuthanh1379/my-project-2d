@@ -18,9 +18,6 @@ public class PlayerMoveByPhysic : MonoBehaviour
 
     private const int JumpMax = 2;
     private const string HorizontalAnimKey = "horizontal";
-    private const string YVelocityAnimKey = "yVelocity";
-    private const string IsGroundedAnimKey = "isGrounded";
-    private const string DoJumpAnimKey = "doJump";
 
     private void Awake()
     {
@@ -49,8 +46,6 @@ public class PlayerMoveByPhysic : MonoBehaviour
     private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded)
     {
         animator.SetFloat(HorizontalAnimKey, Mathf.Abs(horizontal));
-        animator.SetFloat(YVelocityAnimKey, yVelocity);
-        animator.SetBool(IsGroundedAnimKey, isGrounded);
     }
 
     private void Dash()
@@ -74,7 +69,6 @@ public class PlayerMoveByPhysic : MonoBehaviour
         isJumping = true;
         _jumpCount++;
         rigidBody.AddForce(new Vector2(0, 1f) * JumpForce, ForceMode2D.Impulse);
-        animator.SetTrigger(DoJumpAnimKey);
     }
 
     private void Move()

@@ -7,8 +7,6 @@ public class PlayerPhysics : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"collision.name={collision.collider.gameObject.name}");
-
         if (!collision.collider.CompareTag("Obstacle"))
         {
             return;
@@ -24,8 +22,6 @@ public class PlayerPhysics : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"Trigger: {collision.gameObject.name}");
-
         if (!collision.CompareTag("PowerUp"))
         {
             return;
