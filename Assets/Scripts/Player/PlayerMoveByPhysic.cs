@@ -1,3 +1,4 @@
+using Player.Value;
 using UnityEngine;
 
 public class PlayerMoveByPhysic : MonoBehaviour
@@ -17,7 +18,7 @@ public class PlayerMoveByPhysic : MonoBehaviour
     private int _jumpCount;
 
     private const int JumpMax = 2;
-    private const string HorizontalAnimKey = "horizontal";
+    private const string AnimationStateKey = "State";
 
     private void Awake()
     {
@@ -45,7 +46,27 @@ public class PlayerMoveByPhysic : MonoBehaviour
 
     private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded)
     {
-        animator.SetFloat(HorizontalAnimKey, Mathf.Abs(horizontal));
+        int state;
+
+        if (horizontal > 0f || horizontal < 0f)
+        {
+            state = (int) PlayerMoveState.Run;
+        }
+        else
+        {
+            state = (int) PlayerMoveState.Idle;
+        }
+
+        if (yVelocity > .1f)
+        {
+            state = (int) PlayerMoveState.Jump;
+        }
+        else if (yVelocity < -.1f)
+        {
+            state = (int) PlayerMoveState.Fall;
+        }
+        
+        animator.SetInteger(AnimationStateKey, state);
     }
 
     private void Dash()
