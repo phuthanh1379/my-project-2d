@@ -649,7 +649,7 @@ AudioSource:
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -1299,7 +1299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f83e759f805e546a8bb1276d0bae0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profileData: {fileID: 11400000, guid: d3804f8f0b0a30048873b966e7ebb4da, type: 2}
 --- !u!1 &1678480373
 GameObject:
   m_ObjectHideFlags: 0
