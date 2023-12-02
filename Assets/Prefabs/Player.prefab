@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8069474779327253297}
+  profileData: {fileID: 11400000, guid: d3804f8f0b0a30048873b966e7ebb4da, type: 2}
 --- !u!1 &8069474779327253299
 GameObject:
   m_ObjectHideFlags: 0
