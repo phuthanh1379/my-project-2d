@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class PlayerProfile : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
+    [SerializeField] private PlayerProfileData profileData;
 
     private PlayerData _playerData;
+    public int Health => PlayerPrefs.GetInt("health");
 
     private void Awake()
     {

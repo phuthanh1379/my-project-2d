@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sound.Value;
 
 public class UIController : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class UIController : MonoBehaviour
 
     private void OnClickMyButton(int sceneIndex)
     {
+        SoundController.Instance.PlayAudio(SoundName.Type2);
         SceneManager.LoadScene(sceneIndex);
         Debug.Log($"Loading scene index={sceneIndex}");
     }
