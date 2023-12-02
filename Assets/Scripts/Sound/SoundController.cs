@@ -3,34 +3,28 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
-    [SerializeField] private string soundName;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private List<SoundData> soundData = new List<SoundData>();
+    // [SerializeField] private List<SoundData> soundData = new List<SoundData>();
+
+    public static SoundController Instance;
 
     private void Awake()
     {
-        Blockade.StartRemovingBlockade += OnStartRemovingBlockade;
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    private void OnDestroy()
+    public void PlayAudio(string soundName)
     {
-        Blockade.StartRemovingBlockade -= OnStartRemovingBlockade;
-    }
-
-    private void OnStartRemovingBlockade()
-    {
-        PlayAudio(soundName);
-    }
-
-    public void PlayAudio(string name)
-    {
-        foreach (var data in soundData)
-        {
-            if (string.Equals(name, data.name))
-            {
-                audioSource.PlayOneShot(data.clip);
-                return;
-            }
-        }
+        // foreach (var data in soundData)
+        // {
+        //     if (!string.Equals(soundName, data.name))
+        //     {
+        //         continue;
+        //     }
+        //     
+        //     audioSource.PlayOneShot(data.clip);
+        //     return;
+        // }
     }
 }
