@@ -1,12 +1,10 @@
 using DG.Tweening;
-using System;
 using UnityEngine;
 
 public class Blockade : MonoBehaviour
 {
     [SerializeField] private Vector3 endPosition;
-
-    public static event Action StartRemovingBlockade;
+    [SerializeField] private string cutsceneSfxName;
 
     private void Awake()
     {
@@ -25,7 +23,10 @@ public class Blockade : MonoBehaviour
             .SetDelay(3.25f)
             .OnStart(() =>
             {
-                StartRemovingBlockade?.Invoke();
+                if (string.IsNullOrEmpty(cutsceneSfxName))
+                {
+                    SoundController.Instance.PlayAudio(cutsceneSfxName);
+                }
             })
             .Play()
             ;
