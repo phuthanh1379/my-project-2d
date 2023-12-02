@@ -13,7 +13,7 @@ public class Dialogue : MonoBehaviour
     private string _typingDialogue = string.Empty;
     private Sequence _typingSequence;
 
-    private void Awake()
+    private void InitSequence()
     {
         _typingSequence = DOTween.Sequence();
 
@@ -32,8 +32,10 @@ public class Dialogue : MonoBehaviour
             ;
     }
 
-    private void Start()
+    public void StartDialogue(string content)
     {
+        this.dialogue = content;
+        InitSequence();
         _typingSequence.Play();
     }
 }
