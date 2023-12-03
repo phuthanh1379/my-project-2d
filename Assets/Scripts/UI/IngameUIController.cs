@@ -1,29 +1,47 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class IngameUIController : MonoBehaviour
 {
-    [SerializeField] private Image itemHighlightImage;
+    [SerializeField] private TMP_Text playerNameLabel;
+    [SerializeField] private TMP_Text playerArmorLabel;
+    [SerializeField] private TMP_Text playerHitPointLabel;
+    [SerializeField] private TMP_Text playerDamageLabel;
+    [SerializeField] private TMP_Text playerScoreLabel;
 
     private void Awake()
     {
-        ParticleTrigger.PickUpItem += OnPickUpItem;
-    }
-
-    private void Start()
-    {
-        itemHighlightImage.gameObject.SetActive(false);
+        PlayerProfile.BroadcastPlayerData += OnBroadcastPlayerData;
     }
 
     private void OnDestroy()
     {
-        ParticleTrigger.PickUpItem -= OnPickUpItem;
+        PlayerProfile.BroadcastPlayerData -= OnBroadcastPlayerData;
     }
 
-    private void OnPickUpItem(Sprite sprite)
+    private void OnBroadcastPlayerData(PlayerData data)
     {
-        itemHighlightImage.sprite = sprite;
-        itemHighlightImage.gameObject.SetActive(true);
+        if (data == null)
+        {
+            return;
+        }
+
+        playerNameLabel.text = data.Name;
+        playerArmorLabel.text = $"{data.Armor}";
+        playerHitPointLabel.text = $"{data.HitPoint}";
+        playerDamageLabel.text = $"{data.Damage}";
+        playerScoreLabel.text = $"{data.Score}";
+    }
+
+    public void OnShowIngameUI()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void OnHideIngameUI()
+    {
+        Time.timeScale = 1;
     }
 }
