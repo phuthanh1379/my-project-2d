@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 8069474778713255635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8069474779327253298}
@@ -128,8 +128,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069474779208086197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8069474779859150248}
@@ -176,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1a6feec238b9a99499082bb755fa32df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 317b8365a4649ab459f6cb58ec8f9f18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,7 +197,7 @@ Animator:
   m_GameObject: {fileID: 8069474779208086197}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e2fefd53a7ff4724cbec0ee6074eeb46, type: 2}
+  m_Controller: {fileID: 22100000, guid: b810f2280bb2a6b4cbf996716e6e3d55, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -396,14 +396,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8069474779859150248}
-  - component: {fileID: 8069474779859150247}
   - component: {fileID: 8069474779859150244}
   - component: {fileID: 8069474779859150243}
+  - component: {fileID: 8627515922466877085}
   - component: {fileID: 1632569770939016246}
   - component: {fileID: 8069474779859150245}
-  - component: {fileID: 8069474779859150242}
+  - component: {fileID: 162649559234297274}
   m_Layer: 0
-  m_Name: Player
+  m_Name: BanditPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,7 +418,7 @@ Transform:
   m_GameObject: {fileID: 8069474779859150249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8069474779208086194}
@@ -426,21 +426,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8069474779859150247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069474779859150249}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28db4f3c4a6bc741b0a0330dadd99c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 0.15
-  baseScale: {x: 1, y: 1, z: 1}
-  playerModel: {fileID: 8069474779208086194}
 --- !u!114 &8069474779859150244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4893348b168532547aecc9ed4a83382d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
+  boxCollider: {fileID: 162649559234297274}
   profile: {fileID: 8069474779208086157}
 --- !u!114 &8069474779859150243
 MonoBehaviour:
@@ -467,13 +452,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a31fe55376d5a419a0128a8318c65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 8627515922466877085}
   rigidBody: {fileID: 8069474779859150245}
   playerModel: {fileID: 8069474779859150248}
-  animator: {fileID: 8069474779208086196}
-  baseScale: {x: 2, y: 2, z: 2}
+  baseScale: {x: 1, y: 1, z: 1}
   MoveSpeed: 5
   JumpForce: 5
---- !u!114 &1632569770939016246
+--- !u!114 &8627515922466877085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -481,6 +466,19 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8069474779859150249}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc03dc76b5a30494a83d486f35794893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8069474779208086196}
+--- !u!114 &1632569770939016246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069474779859150249}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6df58f1764e51244a353e06910cf3fe, type: 3}
   m_Name: 
@@ -507,7 +505,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &8069474779859150242
+--- !u!70 &162649559234297274
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,8 +518,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.23, y: 0.3}
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 0.5, y: 1.5}
   m_Direction: 0
 --- !u!1 &8069474779900618784
 GameObject:

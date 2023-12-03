@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerPhysics : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Collider2D boxCollider;
     [SerializeField] private PlayerProfile profile;
 
     private void OnCollisionEnter2D(Collision2D collision)

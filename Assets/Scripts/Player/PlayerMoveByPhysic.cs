@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerMoveByPhysic : MonoBehaviour
 {
+    [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Transform playerModel;
-    [SerializeField] private Animator animator;
     [SerializeField] private Vector3 baseScale;
     [SerializeField] private float MoveSpeed = 5f;
     [SerializeField] private float JumpForce = 5f;
@@ -18,7 +18,6 @@ public class PlayerMoveByPhysic : MonoBehaviour
     private int _jumpCount;
 
     private const int JumpMax = 2;
-    private const string AnimationStateKey = "State";
 
     private void Awake()
     {
@@ -40,33 +39,19 @@ public class PlayerMoveByPhysic : MonoBehaviour
             Dash();
         }
 
+        var isAttack = false;
+        if (Input.GetMouseButtonDown(0))
+        {
+            isAttack = true;
+        }
+
         Flip(_horizontal);
-        CheckAnimation(_horizontal, rigidBody.velocity.y, isOnGround);
+        CheckAnimation(_horizontal, rigidBody.velocity.y, isOnGround, isAttack);
     }
 
-    private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded)
+    private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded, bool isAttack)
     {
-        int state;
-
-        if (horizontal > 0f || horizontal < 0f)
-        {
-            state = (int) PlayerMoveState.Run;
-        }
-        else
-        {
-            state = (int) PlayerMoveState.Idle;
-        }
-
-        if (yVelocity > .1f)
-        {
-            state = (int) PlayerMoveState.Jump;
-        }
-        else if (yVelocity < -.1f)
-        {
-            state = (int) PlayerMoveState.Fall;
-        }
-        
-        animator.SetInteger(AnimationStateKey, state);
+        animationController.CheckAnimation(horizontal, yVelocity, isGrounded, isAttack);
     }
 
     private void Dash()
