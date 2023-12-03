@@ -1,10 +1,57 @@
-public class PlayerData
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Player", fileName = "PlayerData")]
+public class PlayerData : ScriptableObject
 {
-    public string Name { get; private set; }
-    public int Armor { get; private set; }
-    public int HitPoint { get; private set; }
-    public int Damage { get; private set; }
-    public int Score { get; private set; }
+    [SerializeField] private string playerName;
+    public string Name
+    {
+        get => playerName;
+        set
+        {
+            playerName = value;
+        }
+    }
+
+    [SerializeField] private int armor;
+    public int Armor
+    {
+        get => armor;
+        set
+        {
+            armor = value;
+        }
+    }
+
+    [SerializeField] private int hitPoint;
+    public int HitPoint
+    {
+        get => hitPoint;
+        set
+        {
+            hitPoint = value;
+        }
+    }
+
+    [SerializeField] private int damage;
+    public int Damage
+    {
+        get => damage;
+        set
+        {
+            damage = value;
+        }
+    }
+
+    [SerializeField] private int score;
+    public int Score
+    {
+        get => score;
+        set
+        {
+            score = value;
+        }
+    }
 
     public PlayerData(string name, int armor, int hitPoint, int damage, int score)
     {
@@ -30,7 +77,6 @@ public class PlayerData
         if (health < 0)
         {
             var dmg = health + this.Armor;
-            UnityEngine.Debug.Log($"dmg={dmg}");
             this.HitPoint += dmg;
         }
         else

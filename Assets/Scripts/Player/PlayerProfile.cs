@@ -1,13 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerProfile : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
-    [SerializeField] private PlayerProfileData profileData;
+    [SerializeField] private PlayerData data;
 
-    private PlayerData _playerData;
     public int Health => PlayerPrefs.GetInt("health");
+
 
     private void Awake()
     {
@@ -30,17 +31,22 @@ public class PlayerProfile : MonoBehaviour
 
     public void AddPlayerHealth(int health)
     {
-        _playerData.AddHealth(health);
-        healthBar.value = _playerData.HitPoint;
+        data.AddHealth(health);
+        healthBar.value = data.HitPoint;
+
+        if (data.HitPoint <= 0)
+        {
+            PlayerDead?.Invoke();
+        }
     }
 
     public void SetPlayerScore(int score)
     {
-        _playerData.SetScore(score);
+        data.SetScore(score);
     }
 
     public void AddPlayerScore(int score)
     {
-        _playerData.AddScore(score);
+        data.AddScore(score);
     }
 }
