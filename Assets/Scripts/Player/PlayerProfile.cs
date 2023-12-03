@@ -9,24 +9,23 @@ public class PlayerProfile : MonoBehaviour
 
     public int Health => PlayerPrefs.GetInt("health");
 
+    public event Action PlayerDead;
+    public static event Action<PlayerData> BroadcastPlayerData;
 
     private void Awake()
     {
         Init();
     }
 
+    private void Start()
+    {
+        BroadcastPlayerData?.Invoke(data);
+    }
+
     private void Init()
     {
-        _playerData = new PlayerData(
-            "MyPlayer",
-            13,
-            100,
-            20,
-            0
-        );
-
-        healthBar.maxValue = _playerData.HitPoint;
-        healthBar.value = _playerData.HitPoint;
+        healthBar.maxValue = data.HitPoint;
+        healthBar.value = data.HitPoint;
     }
 
     public void AddPlayerHealth(int health)

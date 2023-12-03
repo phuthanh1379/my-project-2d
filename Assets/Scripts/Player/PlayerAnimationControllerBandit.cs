@@ -46,4 +46,14 @@ public class PlayerAnimationControllerBandit : PlayerAnimationController
 
         animator.SetInteger(AnimStateKey, (int)state);
     }
+
+    public override void Hurt()
+    {
+        animator.SetTrigger(HurtKey);
+    }
+
+    public override void Dead()
+    {
+        animator.SetTrigger(DeathKey);
+    }
 }
