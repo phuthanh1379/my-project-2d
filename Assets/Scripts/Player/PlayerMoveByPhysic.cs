@@ -1,4 +1,5 @@
 using Player.Value;
+using System;
 using UnityEngine;
 
 public class PlayerMoveByPhysic : MonoBehaviour
@@ -15,9 +16,12 @@ public class PlayerMoveByPhysic : MonoBehaviour
     private bool isOnGround;
     private bool isJumping;
     private bool _isDash = false;
-    private int _jumpCount;
+    private int _jumpCount = default;
+    private int _moveDownCount = default;
 
     private const int JumpMax = 2;
+
+    public event Action PlayerMoveDownPlatform;
 
     private void Awake()
     {
@@ -45,6 +49,16 @@ public class PlayerMoveByPhysic : MonoBehaviour
             isAttack = true;
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _moveDownCount++;
+            if (_moveDownCount >= 1)
+            {
+                MoveDownPlatform();
+                _moveDownCount = default;
+            }
+        }
+
         Flip(_horizontal);
         CheckAnimation(_horizontal, rigidBody.velocity.y, isOnGround, isAttack);
     }
@@ -52,6 +66,11 @@ public class PlayerMoveByPhysic : MonoBehaviour
     private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded, bool isAttack)
     {
         animationController.CheckAnimation(horizontal, yVelocity, isGrounded, isAttack);
+    }
+
+    private void MoveDownPlatform()
+    {
+        PlayerMoveDownPlatform?.Invoke();
     }
 
     private void Dash()
