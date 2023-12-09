@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8069474779327253297}
-  profileData: {fileID: 11400000, guid: d3804f8f0b0a30048873b966e7ebb4da, type: 2}
+  data: {fileID: 0}
 --- !u!1 &8069474779327253299
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +399,6 @@ GameObject:
   - component: {fileID: 8069474779859150247}
   - component: {fileID: 8069474779859150244}
   - component: {fileID: 8069474779859150243}
-  - component: {fileID: 1632569770939016246}
   - component: {fileID: 8069474779859150245}
   - component: {fileID: 8069474779859150242}
   m_Layer: 0
@@ -453,8 +452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4893348b168532547aecc9ed4a83382d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
-  profile: {fileID: 8069474779208086157}
+  playerCollider: {fileID: 0}
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  checkRadius: 0
 --- !u!114 &8069474779859150243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,25 +470,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a31fe55376d5a419a0128a8318c65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   rigidBody: {fileID: 8069474779859150245}
   playerModel: {fileID: 8069474779859150248}
-  animator: {fileID: 8069474779208086196}
   baseScale: {x: 2, y: 2, z: 2}
   MoveSpeed: 5
   JumpForce: 5
---- !u!114 &1632569770939016246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069474779859150249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6df58f1764e51244a353e06910cf3fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 6718787476372281310, guid: 6f3233cff6778d64f94773adfb50ee69, type: 3}
 --- !u!50 &8069474779859150245
 Rigidbody2D:
   serializedVersion: 4

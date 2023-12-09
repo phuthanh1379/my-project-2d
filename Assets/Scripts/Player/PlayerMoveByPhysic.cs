@@ -43,12 +43,6 @@ public class PlayerMoveByPhysic : MonoBehaviour
             Dash();
         }
 
-        var isAttack = false;
-        if (Input.GetMouseButtonDown(0))
-        {
-            isAttack = true;
-        }
-
         if (Input.GetKeyDown(KeyCode.S))
         {
             _moveDownCount++;
@@ -60,12 +54,12 @@ public class PlayerMoveByPhysic : MonoBehaviour
         }
 
         Flip(_horizontal);
-        CheckAnimation(_horizontal, rigidBody.velocity.y, isOnGround, isAttack);
+        CheckAnimation(_horizontal, rigidBody.velocity.y, isOnGround);
     }
 
-    private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded, bool isAttack)
+    private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded)
     {
-        animationController.CheckAnimation(horizontal, yVelocity, isGrounded, isAttack);
+        animationController.CheckAnimation(horizontal, yVelocity, isGrounded);
     }
 
     private void MoveDownPlatform()

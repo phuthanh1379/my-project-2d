@@ -15,6 +15,7 @@ namespace Sound.Value
         public const string Type5 = "Type5";
         public const string Type6 = "Type6";
         public const string Type7 = "Type7";
+        public const string Sword1 = "Sword1";
 
         public static readonly List<string> SoundNames = new List<string>()
         {
@@ -29,6 +30,7 @@ namespace Sound.Value
             Type5,
             Type6,
             Type7,
+            Sword1,
         };
 
         public bool CheckName(string name)

@@ -15,5 +15,6 @@ MonoBehaviour:
   playerName: My Player
   armor: 10
   hitPoint: 100
-  damage: 10
+  maxHitPoint: 100
+  damage: 50
   score: 0

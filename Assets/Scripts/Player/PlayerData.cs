@@ -33,6 +33,16 @@ public class PlayerData : ScriptableObject
         }
     }
 
+    [SerializeField] private int maxHitPoint;
+    public int MaxHitPoint
+    {
+        get => maxHitPoint;
+        set
+        {
+            maxHitPoint = value;
+        }
+    }
+     
     [SerializeField] private int damage;
     public int Damage
     {
@@ -83,5 +93,10 @@ public class PlayerData : ScriptableObject
         {
             this.HitPoint += health;
         }
+    }
+
+    public void ResetHitPoint()
+    {
+        this.HitPoint = this.MaxHitPoint;
     }
 }

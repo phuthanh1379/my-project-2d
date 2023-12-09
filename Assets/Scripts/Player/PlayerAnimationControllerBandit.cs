@@ -14,21 +14,17 @@ public class PlayerAnimationControllerBandit : PlayerAnimationController
     private const string DeathKey = "Death"; // trigger
     private const string AirSpeedKey = "AirSpeed"; // float
 
-    public override void CheckAnimation(float horizontal, float yVelocity, bool isGrounded, bool isAttack)
+    private PlayerIdleState _state;
+
+    public override void CheckAnimation(float horizontal, float yVelocity, bool isGrounded)
     {
-        var state = PlayerIdleState.Idle;
+        _state = PlayerIdleState.Idle;
         
         animator.SetBool(GroundedKey, isGrounded);
         
-        if (isAttack)
-        {
-            state = PlayerIdleState.Combat;
-            animator.SetTrigger(AttackKey);
-        }
-
         if (horizontal > 0f || horizontal < 0f)
         {
-            state = PlayerIdleState.Run;
+            _state = PlayerIdleState.Run;
         }
         else
         {
@@ -44,7 +40,13 @@ public class PlayerAnimationControllerBandit : PlayerAnimationController
 
         }
 
-        animator.SetInteger(AnimStateKey, (int)state);
+        animator.SetInteger(AnimStateKey, (int)_state);
+    }
+
+    public override void Attack()
+    {
+        _state = PlayerIdleState.Combat;
+        animator.SetTrigger(AttackKey);
     }
 
     public override void Hurt()

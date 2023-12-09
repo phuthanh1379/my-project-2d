@@ -7,13 +7,12 @@ public class PlayerProfile : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private PlayerData data;
 
-    public int Health => PlayerPrefs.GetInt("health");
-
     public event Action PlayerDead;
     public static event Action<PlayerData> BroadcastPlayerData;
 
     private void Awake()
     {
+        NewGame();
         Init();
     }
 
@@ -26,6 +25,11 @@ public class PlayerProfile : MonoBehaviour
     {
         healthBar.maxValue = data.HitPoint;
         healthBar.value = data.HitPoint;
+    }
+
+    private void NewGame()
+    {
+        data.ResetHitPoint();
     }
 
     public void AddPlayerHealth(int health)
