@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
     private void Init()
     {
         ChangeState(EnemyState.Normal);
-        _heatlth = maxHealth;
+        _health = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
     }
@@ -76,17 +76,20 @@ public class EnemyController : MonoBehaviour
         switch (state)
         {
             case EnemyState.Normal:
-                _isFlippable = true;
-                _turnRateCount = default;
-                _player = default;
-                animator.SetInteger("AnimState", 0);
-
+                {
+                    _isFlippable = true;
+                    _turnRateCount = default;
+                    _player = default;
+                    animator.SetInteger("AnimState", 0);
+                }
                 break;
 
             case EnemyState.Alert:
-                _isFlippable = false;
-                _player = CheckPlayer();
-                Move();
+                {
+                    _isFlippable = false;
+                    _player = CheckPlayer();
+                    Move();
+                }
                 break;
         }
 
@@ -118,10 +121,10 @@ public class EnemyController : MonoBehaviour
 
     public void Hurt(int damage)
     {
-        _heatlth -= damage;
-        healthBar.value = _heatlth;
+        _health -= damage;
+        healthBar.value = _health;
 
-        if (_heatlth > 0)
+        if (_health > 0)
         {
             animator.SetTrigger("Hurt");
         }
