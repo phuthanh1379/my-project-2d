@@ -2659,7 +2659,7 @@ Tilemap:
       - {fileID: -861761680, guid: 4e5d5fa906da2ae4f88219ef3a518e7b, type: 3}
       - {fileID: 557460072, guid: 4e5d5fa906da2ae4f88219ef3a518e7b, type: 3}
       - {fileID: 2009428553, guid: 4e5d5fa906da2ae4f88219ef3a518e7b, type: 3}
-      m_AnimationSpeed: 10.000001
+      m_AnimationSpeed: 10
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -8, y: -5, z: 0}
@@ -5830,3 +5830,6 @@ MonoBehaviour:
   turnRate: 2
   healthBar: {fileID: 280924188592544992}
   spriteRenderer: {fileID: 280924189008995682}
+  _isFlippable: 0
+  _turnRateCount: 0
+  _currentState: 0
