@@ -13,11 +13,11 @@ public class PlayerMoveByPhysic : MonoBehaviour
 
     private float _horizontal;
     private float _vertical;
-    private bool isOnGround;
-    private bool isJumping;
-    private bool _isDash = false;
-    private int _jumpCount = default;
-    private int _moveDownCount = default;
+    private bool _isOnGround;
+    private bool _isJumping;
+    private bool _isDash;
+    private int _jumpCount;
+    private int _moveDownCount;
 
     private const int JumpMax = 2;
 
@@ -25,8 +25,7 @@ public class PlayerMoveByPhysic : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
-        _jumpCount = default;
+        Init();   
     }
 
     private void Update()
@@ -35,7 +34,7 @@ public class PlayerMoveByPhysic : MonoBehaviour
     
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump(ref isOnGround, ref isJumping);
+            Jump(ref _isOnGround, ref _isJumping);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -54,7 +53,20 @@ public class PlayerMoveByPhysic : MonoBehaviour
         }
 
         Flip(_horizontal);
-        CheckAnimation(_horizontal, rigidBody.velocity.y, isOnGround);
+        CheckAnimation(_horizontal, rigidBody.velocity.y, _isOnGround);
+    }
+
+    private void Init()
+    {
+        Application.targetFrameRate = 60;
+
+        _horizontal = default;
+        _vertical = default;
+        _isOnGround = default;
+        _isJumping = default;
+        _isDash = default;
+        _jumpCount = default;
+        _moveDownCount = default;
     }
 
     private void CheckAnimation(float horizontal, float yVelocity, bool isGrounded)
@@ -122,24 +134,26 @@ public class PlayerMoveByPhysic : MonoBehaviour
     {
         if (collision.transform.CompareTag("Ground"))
         {
-            isOnGround = true;
+            _isOnGround = true;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("Ground"))
+        if (!collision.transform.CompareTag("Ground"))
         {
-            isJumping = false;
-            _jumpCount = default;
+            return;
         }
+        
+        _isJumping = false;
+        _jumpCount = default;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Ground"))
         {
-            isOnGround = false;
+            _isOnGround = false;
         }
     }
 }

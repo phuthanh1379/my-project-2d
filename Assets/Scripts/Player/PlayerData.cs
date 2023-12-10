@@ -7,60 +7,42 @@ public class PlayerData : ScriptableObject
     public string Name
     {
         get => playerName;
-        set
-        {
-            playerName = value;
-        }
+        private set => playerName = value;
     }
 
     [SerializeField] private int armor;
     public int Armor
     {
         get => armor;
-        set
-        {
-            armor = value;
-        }
+        private set => armor = value;
     }
 
     [SerializeField] private int hitPoint;
     public int HitPoint
     {
         get => hitPoint;
-        set
-        {
-            hitPoint = value;
-        }
+        private set => hitPoint = value;
     }
 
     [SerializeField] private int maxHitPoint;
     public int MaxHitPoint
     {
         get => maxHitPoint;
-        set
-        {
-            maxHitPoint = value;
-        }
+        private set => maxHitPoint = value;
     }
      
     [SerializeField] private int damage;
     public int Damage
     {
         get => damage;
-        set
-        {
-            damage = value;
-        }
+        private set => damage = value;
     }
 
     [SerializeField] private int score;
     public int Score
     {
         get => score;
-        set
-        {
-            score = value;
-        }
+        private set => score = value;
     }
 
     public PlayerData(string name, int armor, int hitPoint, int damage, int score)
@@ -72,14 +54,14 @@ public class PlayerData : ScriptableObject
         this.Score = score;
     }
 
-    public void SetScore(int score)
+    public void SetScore(int value)
     {
-        this.Score = score;
+        this.Score = value;
     }
 
-    public void AddScore(int score)
+    public void AddScore(int value)
     {
-        this.Score += score;
+        this.Score += value;
     }
 
     public void AddHealth(int health)
