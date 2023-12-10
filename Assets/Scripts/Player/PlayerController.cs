@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerProfile profileController;
     [SerializeField] private PlayerPhysics physicsController;
-    [SerializeField] private PlayerMoveByPhysic moveController;
+    [SerializeField] private PlayerMove moveController;
     [SerializeField] private PlayerAnimationController animationController;
 
     private void Awake()

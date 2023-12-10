@@ -2,7 +2,7 @@ using Player.Value;
 using System;
 using UnityEngine;
 
-public class PlayerMoveByPhysic : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private Rigidbody2D rigidBody;
