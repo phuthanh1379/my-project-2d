@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    private const string MainSceneName = "Main";
+    private const string MainSceneName = "2D-platform-demo";
 
     private void Awake()
     {
