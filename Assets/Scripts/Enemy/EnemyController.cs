@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     private bool _isFlippable;
     private float _turnRateCount;
-    private float _heatlth;
+    private float _health;
     private EnemyState _currentState;
     private Collider2D _player;
 
