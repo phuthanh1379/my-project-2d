@@ -39,3 +39,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6979d52fda0579441a2122b95abaf337, type: 3}
   - soundName: Sword1
     clip: {fileID: 8300000, guid: 8b0968c37f12af144a4d45511dd5cc42, type: 3}
+  - soundName: InvMetal
+    clip: {fileID: 8300000, guid: a2b4ccd6736279641a5178be9ddd1d04, type: 3}
+  - soundName: InvRing
+    clip: {fileID: 8300000, guid: 15e83416c5c156242968d8ee878cd2c4, type: 3}
+  - soundName: InvCloth
+    clip: {fileID: 8300000, guid: 39861ce94e1e7764e9a8922e505c8905, type: 3}
+  - soundName: InvPage
+    clip: {fileID: 8300000, guid: 189114fd54b76484fabc93d55680da18, type: 3}
+  - soundName: InvCoin
+    clip: {fileID: 8300000, guid: e901a42fc116041468d72ca8506479b1, type: 3}
+  - soundName: InvLeather
+    clip: {fileID: 8300000, guid: 9de61b9e1bac839468026d9ed6a26e5d, type: 3}

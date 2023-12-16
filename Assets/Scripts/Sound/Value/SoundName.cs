@@ -8,6 +8,8 @@ namespace Sound.Value
         public const string Maniac = "Maniac";
         public const string UpAndRight = "UpAndRight";
         public const string HurtAndHeart = "HurtAndHeart";
+
+        // Typing
         public const string Type1 = "Type1";
         public const string Type2 = "Type2";
         public const string Type3 = "Type3";
@@ -15,7 +17,18 @@ namespace Sound.Value
         public const string Type5 = "Type5";
         public const string Type6 = "Type6";
         public const string Type7 = "Type7";
+
+        // Weapon
         public const string Sword1 = "Sword1";
+
+        // Inventory
+        public const string InvMetal = "InvMetal";
+        public const string InvRing = "InvRing";
+        public const string InvCloth = "InvCloth";
+        public const string InvPage = "InvPage";
+        public const string InvCoin = "InvCoin";
+        public const string InvLeather = "InvLeather";
+
 
         public static readonly List<string> SoundNames = new List<string>()
         {
@@ -31,6 +44,12 @@ namespace Sound.Value
             Type6,
             Type7,
             Sword1,
+            InvMetal,
+            InvRing,
+            InvCloth,
+            InvPage,
+            InvCoin,
+            InvLeather,
         };
 
         public bool CheckName(string name)
