@@ -1,13 +1,17 @@
 using Sound.Value;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private InventoryItemData data;
+
+    public static event Action<InventoryItemData> ShowDisplayItem;
+    public static event Action HideDisplayItem;
 
     public Transform ItemParent 
     {
@@ -42,9 +46,18 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log($"OnEndDrag");
         Snap();
         itemImage.raycastTarget = true;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ShowDisplayItem?.Invoke(data);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        HideDisplayItem?.Invoke();
     }
 
     public void Snap()

@@ -23,6 +23,7 @@ public class BottomInventoryController : MonoBehaviour
         item.SetData(data);
         item.ItemParent = slot.ItemParent;
         item.Snap();
+        slot.AddItem(item);
     }
 
     private InventorySlot GetSlot()

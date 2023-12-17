@@ -12,22 +12,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     public bool IsSlotFull => itemParent.transform.childCount > 0;
     public Transform ItemParent => itemParent;
+    public InventoryItem CurrentItem;
 
-    private InventoryItem Item
-    {
-        get
-        {
-            if (_stackCount > 0)
-            {
-                return itemParent.transform.GetChild(0).GetComponent<InventoryItem>();
-            }
-            else
-            {
-                return null;
-            }
-        }
-    }
-    //private int StackCount => itemParent.transform.childCount;
     private int _stackCount;
 
     private void Awake()
@@ -38,10 +24,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler
     private void Init()
     {
         _stackCount = default;
+        CurrentItem = default;
 
         if (IsSlotFull)
         {
             _stackCount = itemParent.transform.childCount;
+            CurrentItem = itemParent.transform.GetChild(0).GetComponent<InventoryItem>();
         }
 
         CheckStack();
@@ -60,30 +48,30 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler
         if (IsSlotFull)
         {
             // Check if stackable
-            if (!CheckStackable(Item, item))
+            if (!CheckStackable(CurrentItem, item))
             {
                 // Swap
-                Swap(Item, item);
+                Swap(CurrentItem, item);
+                CurrentItem = item;
                 CheckStack();
                 return;
             }
         }
 
         item.ItemParent = itemParent;
-        _stackCount += 1;
+        AddItem(item);
         CheckStack();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (_stackCount <= 1)
+        if (_stackCount <= 0)
         {
             _stackCount = 0;
             return;
         }
 
-        _stackCount -= 1;
-        CheckStack();
+        RemoveItem();
     }
 
     private void Swap(InventoryItem thisItem, InventoryItem otherItem)
@@ -108,4 +96,22 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     private static bool CheckStackable(InventoryItem itemA, InventoryItem itemB)
         => (itemA.Data.Id == itemB.Data.Id) && itemA.Data.Stackable && itemB.Data.Stackable;
+
+    public void AddItem(InventoryItem item)
+    {
+        CurrentItem = item;
+        _stackCount += 1;
+        CheckStack();
+    }
+
+    public void RemoveItem()
+    {
+        _stackCount -= 1;
+
+        if (_stackCount > 0)
+        {
+            CurrentItem = itemParent.transform.GetChild(0).GetComponent<InventoryItem>();
+        }
+        CheckStack();
+    }
 }

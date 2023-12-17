@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstAidKitItem
   m_EditorClassIdentifier: 
   id: 0
-  stackable: 0
+  stackable: 1
   itemName: First Aid Kit
   itemDescription: This item heals. A lot.
   itemSprite: {fileID: 2000751000, guid: f0462569c7ef01a488bce562733dd5ea, type: 3}
