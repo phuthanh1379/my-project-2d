@@ -1,3 +1,4 @@
+using Sound.Value;
 using System;
 using UnityEngine;
 
@@ -15,26 +16,38 @@ public class Item : MonoBehaviour
         Init();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.CompareTag("Player"))
+        if (!collision.collider.CompareTag("Player"))
         {
             return;
         }
 
-        if (_isInvoked)
-        {
-            return;
-        }
+        OnPickUp();
+    }
 
-        PickUpItem?.Invoke(data);
-        _isInvoked = true;
-        Destroy(this.gameObject);
+    public void SetData(InventoryItemData data)
+    {
+        this.data = data;
+        LoadData(data);
     }
 
     private void Init()
     {
         LoadData(data);
+    }
+
+    private void OnPickUp()
+    {
+        if (_isInvoked)
+        {
+            return;
+        }
+
+        SoundController.Instance.PlayAudio(SoundName.InvMetal);
+        PickUpItem?.Invoke(data);
+        _isInvoked = true;
+        Destroy(this.gameObject);
     }
 
     private void LoadData(InventoryItemData data)

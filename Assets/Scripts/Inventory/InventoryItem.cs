@@ -14,6 +14,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         get; set;
     }
 
+    public InventoryItemData Data
+    {
+        get => data;
+    }
+
     private void Awake()
     {
         Init();
@@ -37,6 +42,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log($"OnEndDrag");
         Snap();
         itemImage.raycastTarget = true;
     }
@@ -53,7 +59,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         LoadData(data);
     }
 
-    public void LoadData(InventoryItemData itemData)
+    private void LoadData(InventoryItemData itemData)
     {
         if (itemData == null)
         {
@@ -66,5 +72,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void SetSprite(Sprite sprite)
     {
         itemImage.sprite = sprite;
+    }
+
+    public void SetData(InventoryItemData data)
+    {
+        this.data = data;
+        LoadData(data);
     }
 }

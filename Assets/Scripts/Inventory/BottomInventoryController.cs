@@ -20,7 +20,7 @@ public class BottomInventoryController : MonoBehaviour
         }
 
         var item = Instantiate(itemPrefab);
-        item.LoadData(data);
+        item.SetData(data);
         item.ItemParent = slot.ItemParent;
         item.Snap();
     }
