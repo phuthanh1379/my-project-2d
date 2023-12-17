@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: ShotgunItem
   m_EditorClassIdentifier: 
   id: 4
+  stackable: 1
   itemName: Shotgun
+  itemDescription: This item shoots. Bigger bang.
   itemSprite: {fileID: -1688713094, guid: f0462569c7ef01a488bce562733dd5ea, type: 3}

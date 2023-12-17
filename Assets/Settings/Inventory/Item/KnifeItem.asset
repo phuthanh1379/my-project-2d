@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: KnifeItem
   m_EditorClassIdentifier: 
   id: 2
+  stackable: 1
   itemName: Knife
+  itemDescription: This item stabs. Stab stab.
   itemSprite: {fileID: 70658182, guid: f0462569c7ef01a488bce562733dd5ea, type: 3}

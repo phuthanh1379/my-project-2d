@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: GunItem
   m_EditorClassIdentifier: 
   id: 3
+  stackable: 1
   itemName: Gun
+  itemDescription: This item shoots. Bang.
   itemSprite: {fileID: -1344452703, guid: f0462569c7ef01a488bce562733dd5ea, type: 3}

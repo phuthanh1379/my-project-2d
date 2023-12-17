@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: GrenadeItem
   m_EditorClassIdentifier: 
   id: 1
+  stackable: 1
   itemName: Grenade
+  itemDescription: This item explodes. Boom.
   itemSprite: {fileID: -1149803969, guid: f0462569c7ef01a488bce562733dd5ea, type: 3}

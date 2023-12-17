@@ -91,3 +91,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 4813151356339168720}
   rectTransform: {fileID: 4813151356339168723}
+  data: {fileID: 0}
