@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 6718787476372281311}
   - component: {fileID: 6718787476372281282}
   - component: {fileID: 6718787476372281281}
+  - component: {fileID: 7212251253553979269}
+  - component: {fileID: 4851751249649123270}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +125,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7212251253553979269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718787476372281310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d5090339b59834cabdfa70fad4476f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 6718787476372281282}
+  obstacleSetting: {fileID: 4851751249649123270}
+  duration: 2
+--- !u!114 &4851751249649123270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718787476372281310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9353657ef84454f8c7016562563883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: 0

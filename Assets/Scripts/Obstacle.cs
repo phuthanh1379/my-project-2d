@@ -8,4 +8,9 @@ public class Obstacle : MonoBehaviour
     {
         return point;
     }
+
+    public void SetObstaclePoint(int point)
+    {
+        this.point = point;
+    }
 }
