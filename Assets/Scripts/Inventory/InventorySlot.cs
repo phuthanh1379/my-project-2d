@@ -12,7 +12,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     public bool IsSlotFull => itemParent.transform.childCount > 0;
     public Transform ItemParent => itemParent;
-    public InventoryItem CurrentItem;
+    public InventoryItem CurrentItem
+    {
+        get;
+        set;
+    }
 
     private int _stackCount;
 
